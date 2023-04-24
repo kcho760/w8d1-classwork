@@ -1,12 +1,11 @@
-gem 'rack', '~> 3.0.7'
 require 'rack'
-
+require "byebug"
 
 app = Proc.new do |env|
-  req = Rack::Request.new(env)
+  req = Rack::Request.new(env)#localhost3000/i/love/app/academy
   res = Rack::Response.new
-  res['Content-Type'] = 'text/html'
-  res.write("Hello world!")
+  res['Content-Type'] = 'text/html' 
+  res.write(req.path_info)
   res.finish
 end
 
